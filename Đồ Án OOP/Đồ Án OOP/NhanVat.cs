@@ -6,7 +6,7 @@ using System.Threading.Tasks;
     
 namespace Đồ_Án_OOP
 {
-    class NhanVat: INhanVat
+    class NhanVat: IComparable 
     {
         protected string sTenNV;
 
@@ -43,14 +43,34 @@ namespace Đồ_Án_OOP
         protected List<TrangBi> DanhSachTrangBi;
 
         protected List<KyNang> DanhSachKyNang;
+
+        public string STenNV { get => sTenNV; set => sTenNV = value; }
+
         public NhanVat()
         {
             this.DanhSachKyNang = new List<KyNang>();
             this.DanhSachTrangBi = new List<TrangBi>();
         }
+
+        public NhanVat(NhanVat a)
+        {
+            this.STenNV = a.STenNV;
+            this.iLevel = a.iLevel;
+            this.iHealthCB = a.iHealthCB;
+            this.iManaCB = a.iManaCB;
+            this.iSatThuongCB = a.iSatThuongCB;
+            this.iSucManhPhepThuatCB = a.iSucManhPhepThuatCB;
+            this.iGiapCB = a.iGiapCB;
+            this.dTocDoDanhCB = a.dTocDoDanhCB;
+            this.iTocDoDiChuyenCB = a.iTocDoDiChuyenCB;
+            this.DanhSachKyNang = new List<KyNang>(a.DanhSachKyNang);
+            this.DanhSachTrangBi = new List<TrangBi>(a.DanhSachTrangBi);
+
+        }
+
         public NhanVat(string tennv)
         {
-            this.sTenNV = tennv;
+            this.STenNV = tennv;
             this.iLevel = 1;
             this.iHealthCB = this.iHealth = 100;
             this.iManaCB = this.iMana = 50;
@@ -66,7 +86,7 @@ namespace Đồ_Án_OOP
         public NhanVat(string tennv, int level, int health, int mana, int satthuong,
                         int sucmanhpt, int giap, double tocdodanh, int tocdodichuyen)
         {
-            this.sTenNV = tennv;
+            this.STenNV = tennv;
             this.iLevel = level;
             this.iHealthCB = health;
             this.iManaCB = mana;
@@ -89,7 +109,7 @@ namespace Đồ_Án_OOP
             try
             {
                 Console.WriteLine("Nhap ten nhan vat: ");
-                this.sTenNV = Console.ReadLine();
+                this.STenNV = Console.ReadLine();
 
                 Console.WriteLine("Nhap Level: ");
                 this.iLevel = int.Parse(Console.ReadLine());
@@ -130,6 +150,7 @@ namespace Đồ_Án_OOP
 
             for(int i =0;i<sl;i++)
             {
+                Console.WriteLine("+ Ky nang " + i);
                 KyNang skill = new KyNang();
                 skill.Nhap();
                 this.DanhSachKyNang.Add(skill);
@@ -145,6 +166,7 @@ namespace Đồ_Án_OOP
 
             for (int i = 0; i < sl; i++)
             {
+                Console.WriteLine("+ Trang bi " + i);
                 TrangBi TB = new TrangBi();
                 TB.Nhap();
                 this.DanhSachTrangBi.Add(TB);
@@ -158,7 +180,7 @@ namespace Đồ_Án_OOP
                 Console.WriteLine("Danh sach trang bi:\n");
                 for (int i = 0; i < DanhSachTrangBi.Count(); i++)
                 {
-                    Console.WriteLine("-------------------------");
+                    Console.WriteLine("{0}.-------------------------", i);
                     DanhSachTrangBi[i].Xuat();
                 }
             }catch(Exception)
@@ -174,7 +196,7 @@ namespace Đồ_Án_OOP
                 Console.WriteLine("Danh sach ky nang:\n");
                 for (int i = 0; i < DanhSachKyNang.Count; i++)
                 {
-                    Console.WriteLine("-------------------------");
+                    Console.WriteLine("{0}.-------------------------", i);
                     DanhSachKyNang[i].Xuat();
                 }
             }
@@ -187,7 +209,7 @@ namespace Đồ_Án_OOP
         public virtual void XuatThongTin()
         {
             Console.WriteLine("==============================");
-            Console.WriteLine("Name: " + this.sTenNV);
+            Console.WriteLine("Name: " + this.STenNV);
             Console.WriteLine("Level: " + this.iLevel);
             Console.WriteLine("Health: " + this.iHealth);
             Console.WriteLine("Mana: " + this.iMana);
@@ -208,6 +230,14 @@ namespace Đồ_Án_OOP
         {
             try
             {
+                this.iHealth = this.iHealthCB;
+                this.iMana = this.iManaCB;
+                this.iSatThuong = this.iSatThuongCB;
+                this.iSucManhPhepThuat = this.iSucManhPhepThuatCB;
+                this.iGiap = this.iGiapCB;
+                this.iTocDoDiChuyen = this.iTocDoDiChuyenCB;
+                this.dTocDoDanh = this.dTocDoDanhCB;
+
                 for (int i = 0; i < this.DanhSachTrangBi.Count; i++)
                 {
                     this.iHealth = this.iHealthCB + DanhSachTrangBi[i].IHealth;
@@ -231,23 +261,11 @@ namespace Đồ_Án_OOP
 
         public void AddKyNang(KyNang a)
         {
-            //if (this.DanhSachKyNang.Count >= 3)
-            //{
-            //    Console.WriteLine("Da dat 3 ky nang!");
-            //    return;
-            //}
-
             this.DanhSachKyNang.Add(a);
         }
 
         public void AddTrangBi(TrangBi a)
         {
-            if (this.DanhSachTrangBi.Count >= 5)
-            {
-                Console.WriteLine("Da dat 5 ky nang!");
-                return;
-            }
-
             this.DanhSachTrangBi.Add(a);
         }
 
@@ -308,6 +326,31 @@ namespace Đồ_Án_OOP
         public static bool operator <(NhanVat a, NhanVat b)
         {
             return a.iLevel < b.iLevel;
+        }
+
+        public int CompareTo(object nvat)
+        {
+            NhanVat nv = nvat as NhanVat;
+            if (this.iLevel > nv.iLevel)
+                return 1;
+            if (this.iLevel < nv.iLevel)
+                return 0;
+            return -1;
+        }
+
+        public void Gan(NhanVat a)
+        {
+            this.STenNV = a.STenNV;
+            this.iLevel = a.iLevel;
+            this.iHealthCB = a.iHealthCB;
+            this.iManaCB = a.iManaCB;
+            this.iSatThuongCB = a.iSatThuongCB;
+            this.iSucManhPhepThuatCB = a.iSucManhPhepThuatCB;
+            this.iGiapCB = a.iGiapCB;
+            this.dTocDoDanhCB = a.dTocDoDanhCB;
+            this.iTocDoDiChuyenCB = a.iTocDoDiChuyenCB;
+            this.DanhSachKyNang = new List<KyNang>(a.DanhSachKyNang);
+            this.DanhSachTrangBi = new List<TrangBi>(a.DanhSachTrangBi);
         }
     }
 }

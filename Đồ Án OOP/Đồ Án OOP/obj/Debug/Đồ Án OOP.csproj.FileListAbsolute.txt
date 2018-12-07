@@ -5,3 +5,10 @@ F:\HƯỚNG ĐỐI TƯỢNG\Đồ Án OOP\Đồ Án OOP\bin\Debug\Đồ Án OOP.
 F:\HƯỚNG ĐỐI TƯỢNG\Đồ Án OOP\Đồ Án OOP\bin\Debug\Đồ Án OOP.pdb
 F:\HƯỚNG ĐỐI TƯỢNG\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.exe
 F:\HƯỚNG ĐỐI TƯỢNG\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.pdb
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\bin\Debug\Đồ Án OOP.exe.config
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\bin\Debug\Đồ Án OOP.exe
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\bin\Debug\Đồ Án OOP.pdb
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.csprojAssemblyReference.cache
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.csproj.CoreCompileInputs.cache
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.exe
+C:\Users\mrtht\Documents\Do_An_OOP\Đồ Án OOP\Đồ Án OOP\obj\Debug\Đồ Án OOP.pdb

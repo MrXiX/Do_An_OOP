@@ -1,0 +1,16 @@
+5
+Teleport
+Chu dong
+Dich chuyen den mot noi trong vong 5s.
+Toc hanh
+Chu dong
+Tang 25% toc do di chuyen trong 10s.
+Hoi Mau
+Chu dong
+Lap tuc tang 20% mau.
+Deo dai
+Bi dong
+hoi 5 mau moi giay.
+Bat khuat
+Bi dong
+Tang 15% giap va mau khi mau thap hon 50%.

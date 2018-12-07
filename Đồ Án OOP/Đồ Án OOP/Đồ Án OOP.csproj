@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DauSi.cs" />
     <Compile Include="DoDon.cs" />
+    <Compile Include="GenericSwap.cs" />
     <Compile Include="IKyNang.cs" />
     <Compile Include="INhanVat.cs" />
     <Compile Include="ITrangBi.cs" />
