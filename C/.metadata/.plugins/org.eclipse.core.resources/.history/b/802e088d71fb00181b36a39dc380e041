@@ -1,0 +1,7 @@
+
+public interface IKyNang 
+{
+	void Nhap();
+	void Nhap(String tenkn, int loaikn, String mieuta);
+	void Xuat();
+}

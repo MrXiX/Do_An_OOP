@@ -1,0 +1,40 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+public abstract class KyNang implements IKyNang
+{
+	private String sTenKyNang;
+	private String sLoaiKyNang;
+	private String sMieuTa;
+	public String getsTenKyNang() {
+		return sTenKyNang;
+	}
+	public void setsTenKyNang(String sTenKyNang) {
+		this.sTenKyNang = sTenKyNang;
+	}
+	public String getsLoaiKyNag() {
+		return sLoaiKyNag;
+	}
+	public void setsLoaiKyNag(String sLoaiKyNang) {
+		this.sLoaiKyNag = sLoaiKyNang;
+	}
+	public String getsMieuTa() {
+		return sMieuTa;
+	}
+	public void setsMieuTa(String sMieuTa) {
+		this.sMieuTa = sMieuTa;
+	}
+	public KyNang()
+	{
+		this.sTenKyNang="";
+		this.sLoaiKyNang="";
+		this.sMieuTa="";
+	}
+	public KyNang(String tenkn, String loaikn, String mieuta)
+	{
+		this.sTenKyNang=tenkn;
+		this.sLoaiKyNang=loaikn;
+		this.sMieuTa=mieuta;
+	}
+	
+}

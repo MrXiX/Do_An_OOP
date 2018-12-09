@@ -1,0 +1,15 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+public class GenericSwap 
+{
+	public void Swap(ref T a, ref T b)
+	{
+		T temp;
+		
+	}
+}
