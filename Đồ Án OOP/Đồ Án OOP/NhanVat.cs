@@ -6,7 +6,7 @@ using System.Threading.Tasks;
     
 namespace Đồ_Án_OOP
 {
-    class NhanVat: IComparable 
+    class NhanVat
     {
         protected string sTenNV;
 
@@ -45,6 +45,7 @@ namespace Đồ_Án_OOP
         protected List<KyNang> DanhSachKyNang;
 
         public string STenNV { get => sTenNV; set => sTenNV = value; }
+        public int ILevel { get => iLevel; set => iLevel = value; }
 
         public NhanVat()
         {
@@ -55,7 +56,7 @@ namespace Đồ_Án_OOP
         public NhanVat(NhanVat a)
         {
             this.STenNV = a.STenNV;
-            this.iLevel = a.iLevel;
+            this.ILevel = a.ILevel;
             this.iHealthCB = a.iHealthCB;
             this.iManaCB = a.iManaCB;
             this.iSatThuongCB = a.iSatThuongCB;
@@ -71,7 +72,7 @@ namespace Đồ_Án_OOP
         public NhanVat(string tennv)
         {
             this.STenNV = tennv;
-            this.iLevel = 1;
+            this.ILevel = 1;
             this.iHealthCB = this.iHealth = 100;
             this.iManaCB = this.iMana = 50;
             this.iSatThuongCB = this.iSatThuong = 10;
@@ -87,7 +88,7 @@ namespace Đồ_Án_OOP
                         int sucmanhpt, int giap, double tocdodanh, int tocdodichuyen)
         {
             this.STenNV = tennv;
-            this.iLevel = level;
+            this.ILevel = level;
             this.iHealthCB = health;
             this.iManaCB = mana;
             this.iSatThuongCB = satthuong;
@@ -112,7 +113,7 @@ namespace Đồ_Án_OOP
                 this.STenNV = Console.ReadLine();
 
                 Console.WriteLine("Nhap Level: ");
-                this.iLevel = int.Parse(Console.ReadLine());
+                this.ILevel = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("Nhap Health: ");
                 this.iHealthCB = this.iHealth = int.Parse(Console.ReadLine());
@@ -210,7 +211,7 @@ namespace Đồ_Án_OOP
         {
             Console.WriteLine("==============================");
             Console.WriteLine("Name: " + this.STenNV);
-            Console.WriteLine("Level: " + this.iLevel);
+            Console.WriteLine("Level: " + this.ILevel);
             Console.WriteLine("Health: " + this.iHealth);
             Console.WriteLine("Mana: " + this.iMana);
             Console.WriteLine("Magic: " + this.iSucManhPhepThuat);
@@ -249,11 +250,11 @@ namespace Đồ_Án_OOP
                     this.dTocDoDanh = this.dTocDoDanhCB + DanhSachTrangBi[i].DTocDoDanh;
                 }
 
-                this.iHealth += 100 * this.iLevel;
-                this.iMana += 50 * this.iLevel;
-                this.iSatThuong += 10 * this.iLevel;
-                this.iSucManhPhepThuat += 10 * this.iLevel;
-                this.iGiap += 5 * this.iLevel;
+                this.iHealth += 100 * this.ILevel;
+                this.iMana += 50 * this.ILevel;
+                this.iSatThuong += 10 * this.ILevel;
+                this.iSucManhPhepThuat += 10 * this.ILevel;
+                this.iGiap += 5 * this.ILevel;
             }
             catch(Exception)
             { }
@@ -269,79 +270,68 @@ namespace Đồ_Án_OOP
             this.DanhSachTrangBi.Add(a);
         }
 
-
-
         public static bool operator ==(NhanVat a, NhanVat b)
         {
-            return (a.iLevel == b.iLevel);
+            return (a.ILevel == b.ILevel);
         }
         public static bool operator !=(NhanVat a, NhanVat b)
         {
-            return (a.iLevel != b.iLevel);
+            return (a.ILevel != b.ILevel);
         }
 
         public static NhanVat operator ++(NhanVat a)
         {
-            a.iLevel++;
+            a.ILevel++;
             a.Update();
             return a;
         }
 
         public static NhanVat operator --(NhanVat a)
         {
-             a.iLevel--;
+             a.ILevel--;
             a.Update();
             return a;
         }
 
         public static NhanVat operator +(NhanVat a,int b)
         {
-            a.iLevel += b;
+            a.ILevel += b;
             a.Update();
             return a;
         }
 
         public static NhanVat operator -(NhanVat a, int b)
         {
-            a.iLevel -= b;
+            a.ILevel -= b;
             a.Update();
             return a;
         }
 
         public static bool operator >=(NhanVat a, NhanVat b)
         {
-            return a.iLevel >= b.iLevel;
+            return a.ILevel >= b.ILevel;
         }
 
         public static bool operator <=(NhanVat a, NhanVat b)
         {
-            return a.iLevel <= b.iLevel;
+            return a.ILevel <= b.ILevel;
         }
 
         public static bool operator >(NhanVat a, NhanVat b)
         {
-            return a.iLevel > b.iLevel;
+            return a.ILevel > b.ILevel;
         }
 
         public static bool operator <(NhanVat a, NhanVat b)
         {
-            return a.iLevel < b.iLevel;
+            return a.ILevel < b.ILevel;
         }
 
-        public int CompareTo(object nvat)
-        {
-            NhanVat nv = nvat as NhanVat;
-            if (this.iLevel > nv.iLevel)
-                return 1;
-            if (this.iLevel < nv.iLevel)
-                return 0;
-            return -1;
-        }
 
         public void Gan(NhanVat a)
         {
             this.STenNV = a.STenNV;
-            this.iLevel = a.iLevel;
+            this.ILevel = a.ILevel;
             this.iHealthCB = a.iHealthCB;
             this.iManaCB = a.iManaCB;
             this.iSatThuongCB = a.iSatThuongCB;
@@ -352,5 +342,6 @@ namespace Đồ_Án_OOP
             this.DanhSachKyNang = new List<KyNang>(a.DanhSachKyNang);
             this.DanhSachTrangBi = new List<TrangBi>(a.DanhSachTrangBi);
         }
+
     }
 }

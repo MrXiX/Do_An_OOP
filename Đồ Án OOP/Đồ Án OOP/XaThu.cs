@@ -13,7 +13,7 @@ namespace Đồ_Án_OOP
         private int iTamBan;
 
         public string STenNV { get => base.STenNV; set => base.STenNV = value; }
-        public int ILevel { get => iLevel; set => iLevel = value; }
+        public int ILevel { get => base.ILevel; set => base.ILevel = value; }
         public int IHealthCB { get => iHealthCB; set => iHealthCB = value; }
         public int IHealth { get => iHealth; set => iHealth = value; }
         public int IManaCB { get => iManaCB; set => iManaCB = value; }

@@ -298,7 +298,6 @@ namespace Đồ_Án_OOP
                 a.Nhap();
                 LNhanVat.Add(a);
             }
-
         }
 
         public void NhapfileTrangBi()
@@ -508,7 +507,7 @@ namespace Đồ_Án_OOP
             if (i < r) QuickSort(a, i, r);
         }
 
-        public void SapXepNhanh()
+        public void SapXepQuickSort()
         {
             NhanVat[] A = new NhanVat[100];
             A = this.LNhanVat.ToArray();
@@ -518,6 +517,104 @@ namespace Đồ_Án_OOP
             this.lNhanVat.Clear();
             for (int i = 0; i < A.Length; i++)
                 lNhanVat.Add(A[i]);
+        }
+
+        public void TimTenNV(string s)
+        {
+            var Q =
+                ( from NV in LNhanVat
+                  where String.Compare(s, NV.STenNV, true) == 0
+                  select NV ).ToList();
+
+            if(Q.Count == 0)
+                Console.WriteLine("+ Khong tim thay!!!");
+
+            foreach (NhanVat NV in Q)
+            {
+                Console.WriteLine("+ Tim thay!");
+                NV.Xuat();
+            }
+        }
+
+        public void TimLevel(int s)
+        {
+            var Q =
+                  (  from NV in LNhanVat
+                     where NV.ILevel == s
+                     select NV).ToList();
+
+            if (Q.Count == 0)
+                Console.WriteLine("+ Khong tim thay!!!");
+
+            foreach (NhanVat NV in Q)
+            {
+                Console.WriteLine("+ Tim thay!");
+                NV.Xuat();
+            }
+
+        }
+
+        public void TimLevelMax()
+        {
+            int max = lNhanVat[0].ILevel;
+            for (int i = 0; i < lNhanVat.Count; i++)
+            {
+                if (lNhanVat[i].ILevel > max)
+                {
+                    max = lNhanVat[i].ILevel;
+                }
+            }
+
+            var Q =
+                (from NV in lNhanVat
+                 where NV.ILevel == max
+                 select NV).ToList();
+            Console.WriteLine("+ Nhan vat co Level Cao nhat:");
+            foreach (NhanVat NV in Q)
+            {
+                NV.Xuat();
+            }
+        }
+
+        public void TimLevelMin()
+        {
+            int min = lNhanVat[0].ILevel;
+            for (int i = 0; i < lNhanVat.Count; i++)
+            {
+                if (lNhanVat[i].ILevel < min)
+                {
+                    min = lNhanVat[i].ILevel;
+                }
+            }
+
+            var Q =
+                (from NV in lNhanVat
+                 where NV.ILevel == min
+                 select NV).ToList();
+            Console.WriteLine("+ Nhan vat co Level Thap nhat:");
+            foreach (NhanVat NV in Q)
+            {
+                NV.Xuat();
+            }
+        }
+
+        public void XuatCB()
+        {
+            for (int i = 0; i < lNhanVat.Count; i++)
+            {
+                Console.WriteLine("{0}.=====================", i);
+                Console.WriteLine("- Ten NV: {0}\n- Level: {1}",lNhanVat[i].STenNV,lNhanVat[i].ILevel);
+            }
+        }
+
+        public void ThayDoiTen(int x, string s)
+        {
+            lNhanVat[x].STenNV = s;
+        }
+
+        public void ThayDoiLevel(int x ,int level)
+        {
+            lNhanVat[x].ILevel = level; 
         }
 
     }
